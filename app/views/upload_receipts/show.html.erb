@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @upload_receipt.file_name %>
+</p>
+
+<p>
+  <strong>Folder:</strong>
+  <%= @upload_receipt.folder %>
+</p>
+
+<%= link_to 'Edit', edit_upload_receipt_path(@upload_receipt) %> |
+<%= link_to 'Back', upload_receipts_path %>
