@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Upload URLs</th>
+      <th>Upload Receipts</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +16,12 @@
     <% @folders.each do |folder| %>
       <tr>
         <td><%= folder.name %></td>
+        <td>
+          <% folder.upload_urls.each do |url| %>
+            <span class="button btn btn-primary btn-sm"><%= url.code %></span>
+          <% end %>
+        </td>
+        <td><%= folder.upload_receipts.length %></td>
         <td><%= link_to 'Show', folder %></td>
         <td><%= link_to 'Edit', edit_folder_path(folder) %></td>
         <td><%= link_to 'Destroy', folder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
