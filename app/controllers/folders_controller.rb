@@ -8,6 +8,8 @@ class FoldersController < ApplicationController
 
   # GET /folders/1
   def show
+    @upload_urls = @folder.upload_urls
+    @upload_receipts = @folder.upload_receipts
   end
 
   # GET /folders/new
