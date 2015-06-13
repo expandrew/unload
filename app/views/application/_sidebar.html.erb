@@ -1,0 +1,5 @@
+<ul class="nav nav-sidebar">
+  <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Overview", root_path %></li>
+  <li class="<%= 'active' if current_page?(folders_path) %>"><%= link_to "Folders", folders_path %></li>
+  <li class="<%= 'active' if current_page?(settings_path) %>"><%= link_to "Settings", settings_path %></li>
+</ul>
