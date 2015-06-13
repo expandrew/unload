@@ -25,7 +25,7 @@ class UploadUrlsController < ApplicationController
     @upload_url = @folder.upload_urls.new(upload_url_params)
 
     if @upload_url.save
-      redirect_to [@folder, @upload_url], notice: 'Upload url was successfully created.'
+      redirect_to folder_path(@folder), notice: 'Upload url was successfully created.'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class UploadUrlsController < ApplicationController
   # DELETE /folders/123/upload_urls/1
   def destroy
     @upload_url.destroy
-    redirect_to folder_upload_urls_path(@folder), notice: 'Upload url was successfully destroyed.'
+    redirect_to folder_path(@folder), notice: 'Upload url was successfully destroyed.'
   end
 
   private
