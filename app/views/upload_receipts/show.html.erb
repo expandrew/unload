@@ -10,5 +10,5 @@
   <%= @upload_receipt.folder %>
 </p>
 
-<%= link_to 'Edit', edit_upload_receipt_path(@upload_receipt) %> |
-<%= link_to 'Back', upload_receipts_path %>
+<%= link_to 'Edit', edit_folder_upload_receipt_path(@folder, @upload_receipt) %> |
+<%= link_to 'Back', folder_upload_receipts_path(@folder) %>

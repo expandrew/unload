@@ -10,5 +10,5 @@
   <%= @upload_url.folder %>
 </p>
 
-<%= link_to 'Edit', edit_upload_url_path(@upload_url) %> |
-<%= link_to 'Back', upload_urls_path %>
+<%= link_to 'Edit', edit_folder_upload_url_path(@folder, @upload_url) %> |
+<%= link_to 'Back', folder_upload_urls_path(@folder) %>

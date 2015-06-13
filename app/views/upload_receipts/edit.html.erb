@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @upload_receipt %> |
-<%= link_to 'Back', upload_receipts_path %>
+<%= link_to 'Show', folder_upload_receipts_path(@folder, @upload_receipt) %> |
+<%= link_to 'Back', folder_upload_receipts_path(@folder) %>
