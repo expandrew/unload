@@ -1,14 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
+<h1 class="page-header">
+  <!-- Heading Text -->
   <%= @folder.name %>
-</p>
-<p>
-  <%= link_to "Upload URLs", folder_upload_urls_path(@folder), class: "btn btn-primary btn-sm" %>
-  <%= link_to "Upload Receipts", folder_upload_receipts_path(@folder), class: "btn btn-primary btn-sm" %>
-</p>
+  <!-- Actions Button -->
+  <div class="btn-group pull-right">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li role="presentation" class="dropdown-header">Folder</li>
+      <li><%= link_to 'Edit Folder', edit_folder_path(@folder) %></li>
+      <li><%= link_to "Destroy Folder", @folder, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <li class="divider"></li>
+      <li role="presentation" class="dropdown-header">Upload URLs</li>
+      <li><%= link_to 'New Upload URL', new_folder_upload_url_path(@folder) %></li>
+      <li class="divider"></li>
+      <li role="presentation" class="dropdown-header">Upload Receipts</li>
+      <li class="disabled"><a href="#">Clear All Receipts</a></li>
+    </ul>
+  </div>
+</h1>
+
+<div class="row">
+  <!-- Upload URLs Table -->
+  <div class="col-md-3">
+    <h2>Upload URLs</h2>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @folder.upload_urls.each do |upload_url| %>
+          <tr>
+          <td><%= upload_url.code %></td>
+          <td width="30%"><%= link_to 'Destroy', [@folder, upload_url], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <!-- Upload Receipts Table -->
+  <div class="col-md-9">
+    <h2>Upload Receipts</h2>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th width="50%">File Name</th>
+          <th width="40%">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @upload_receipts.each do |upload_receipt| %>
+        <tr>
+          <td><%= upload_receipt.id %></td>
+          <td><%= upload_receipt.file_name %></td>
+          <td><%= upload_receipt.created_at %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 
-<%= link_to 'Edit', edit_folder_path(@folder) %> |
-<%= link_to 'Back', folders_path %>
+
