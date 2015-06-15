@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     resources :upload_urls, only: [:new, :create, :destroy]
     resources :upload_receipts, only: [:destroy]
   end
+  get 'upload', to: 'uploader#index'
+  get 'upload/:code', to: 'uploader#upload'
 end
