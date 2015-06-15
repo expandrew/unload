@@ -1,21 +1,21 @@
 class UploaderController < ApplicationController
-  before_action :set_upload_url, only: :upload
+  before_action :set_folder, only: :upload
 
   def index
     render 'index'
   end
 
   def upload
-    if @upload_url
+    if @folder
       render 'upload'
     else
-      redirect_to upload_path, notice: 'This Upload URL was invalid.'
+      redirect_to upload_path, notice: 'Your Upload Code was invalid.'
     end
   end
 
   private
 
-  def set_upload_url
-    @upload_url = UploadUrl.find_by(code: params[:code])
+  def set_folder
+    @folder = Folder.find_by(upload_code: params[:code])
   end
 end

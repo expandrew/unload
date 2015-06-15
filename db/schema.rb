@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606054331) do
+ActiveRecord::Schema.define(version: 20150615074203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,12 @@ ActiveRecord::Schema.define(version: 20150606054331) do
 
   create_table "folders", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "upload_code"
   end
+
+  add_index "folders", ["upload_code"], name: "index_folders_on_upload_code", using: :btree
 
   create_table "upload_receipts", force: :cascade do |t|
     t.string   "file_name"
@@ -47,16 +50,5 @@ ActiveRecord::Schema.define(version: 20150606054331) do
 
   add_index "upload_receipts", ["folder_id"], name: "index_upload_receipts_on_folder_id", using: :btree
 
-  create_table "upload_urls", force: :cascade do |t|
-    t.string   "code"
-    t.integer  "folder_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "upload_urls", ["code"], name: "index_upload_urls_on_code", unique: true, using: :btree
-  add_index "upload_urls", ["folder_id"], name: "index_upload_urls_on_folder_id", using: :btree
-
   add_foreign_key "upload_receipts", "folders"
-  add_foreign_key "upload_urls", "folders"
 end

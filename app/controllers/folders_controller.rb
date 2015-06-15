@@ -8,7 +8,6 @@ class FoldersController < ApplicationController
 
   # GET /folders/1
   def show
-    @upload_urls = @folder.upload_urls
     @upload_receipts = @folder.upload_receipts
   end
 
@@ -43,10 +42,6 @@ class FoldersController < ApplicationController
 
   # DELETE /folders/1
   def destroy
-    @folder.upload_urls.each do |upload_url|
-      upload_url.destroy
-    end
-
     @folder.upload_receipts.each do |upload_receipt|
       upload_receipt.destroy
     end

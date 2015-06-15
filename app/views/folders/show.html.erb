@@ -11,38 +11,26 @@
       <li><%= link_to 'Edit Folder', edit_folder_path(@folder) %></li>
       <li><%= link_to "Destroy Folder", @folder, method: :delete, data: { confirm: 'Are you sure?' } %></li>
       <li class="divider"></li>
-      <li role="presentation" class="dropdown-header">Upload URLs</li>
-      <li><%= link_to 'New Upload URL', new_folder_upload_url_path(@folder) %></li>
+      <li role="presentation" class="dropdown-header">Upload Code</li>
+      <li class="disabled"><a href="#">Generate New Upload Code</li>
+      <li class="disabled"><a href="#">Disable Upload Code</li>
       <li class="divider"></li>
       <li role="presentation" class="dropdown-header">Upload Receipts</li>
       <li class="disabled"><a href="#">Clear All Receipts</a></li>
     </ul>
   </div>
 </h1>
+<p class="lead">
+  <% if !@folder.upload_code %>
+    This folder doesn't have an upload code.
+  <% else %>
+    This folder's upload code is <span class="label label-default"><%= @folder.upload_code %></span>
+  <% end %>
+</p>
 
 <div class="row">
-  <!-- Upload URLs Table -->
-  <div class="col-md-3">
-    <h2>Upload URLs</h2>
-    <table class="table table-condensed">
-      <thead>
-        <tr>
-          <th>Code</th>
-          <th colspan="1"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @folder.upload_urls.each do |upload_url| %>
-          <tr>
-          <td><%= upload_url.code %></td>
-          <td width="30%"><%= link_to 'Destroy', [@folder, upload_url], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
   <!-- Upload Receipts Table -->
-  <div class="col-md-9">
+  <div class="col-sm-12">
     <h2>Upload Receipts</h2>
     <table class="table table-condensed">
       <thead>
