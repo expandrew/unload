@@ -1,5 +1,91 @@
 # Unload
 
+unload is for uploading files to Google Drive from the web.
+
+It's built to scratch an itch for a photo retouching business that handles batch photo uploads.
+
+# Project Notes / Development Log
+
+Probably TMI but these are my process notes, mainly for my own reference.
+
+*Tools*
+- [suspenders](https://github.com/thoughtbot/suspenders)
+- [bootstrap-sass](https://github.com/twbs/bootstrap-sass)
+- [dropzonejs-rails](https://github.com/ncuesta/dropzonejs-rails)
+- [google-api-client](https://github.com/google/google-api-ruby-client)
+
+*Useful*
+- [Nested Routes](https://gist.github.com/jhjguxin/3074080)
+
+## Flow
+
+**Client**
+- receives email with url upload url for project (http://u.pxlvue.com/c0De)
+- goes to url, sees uploader view and drops files (no login, the code was in the url)
+- or, goes to upload index, enters code and gets taken to uploader view for that code
+
+**Dashboard**
+- Special url/route (http://u.pxlvue.com/a/); protected by sign-in password (no multi-user support yet for MVP)
+- CRUD folders; (:folder has_many :upload_receipts)
+- CRUD @folder.upload_code (update just regenerates the )
+- xRxx upload_receipts (each uploaded file will generate an upload receipt)
+- xxUx Dashboard password (in Settings)
+
+## Models
+
+### Folder
+
+**Stories** 
+- Admin user can CRUD a folder
+- Admin user can set an upload code for a folder
+- Admin user can xRxx upload_receipts on folder
+
+**Associations**
+`has_many :upload_receipts`
+
+**Table Columns**
+```ruby
+name :string
+id :index
+upload_code :string (SecureRandom.urlsafe_base64(3))
+```
+
+**Scaffold**
+`rails generate scaffold folder name:string`
+
+
+### Upload Receipt
+
+**Stories**
+- Application generates an upload_receipt object for each file uploaded through the app to Drive
+- Admin user can view a folder's upload receipts to see what files have been uploaded
+
+**Associations**
+`belongs_to :folder`
+
+**Table Columns**
+```
+file_name: stringid: indexed
+folder_id: foreign_key to folders
+timestamps
+```
+
+**Scaffold**
+`rails generate scaffold UploadReceipt file_name:string folder_id:references —timestamps`
+
+## Uploader View
+
+**Stories**
+- Client goes to special URL (http://u.pxlvue.com/upload/c0De) and sees uploader for the corresponding Folder with that upload code
+
+**Scaffold**
+`rails generate controller Uploader`
+
+(base template at `/layouts/uploader.html.erb`)
+
+
+# Suspenders README
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine
