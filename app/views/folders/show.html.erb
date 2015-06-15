@@ -9,11 +9,11 @@
     <ul class="dropdown-menu" role="menu">
       <li role="presentation" class="dropdown-header">Folder</li>
       <li><%= link_to 'Edit Folder', edit_folder_path(@folder) %></li>
-      <li><%= link_to "Destroy Folder", @folder, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <li><%= link_to 'Destroy Folder', @folder, method: :delete, data: { confirm: 'Are you sure?' } %></li>
       <li class="divider"></li>
       <li role="presentation" class="dropdown-header">Upload Code</li>
-      <li class="disabled"><a href="#">Generate New Upload Code</li>
-      <li class="disabled"><a href="#">Disable Upload Code</li>
+      <li><%= link_to 'Generate New Upload Code', folder_code_path(@folder), method: :post, data: { confirm: 'Are you sure you want to generate a new upload code for this folder?' } %></li>
+      <li><%= link_to 'Disable Upload Code', folder_code_path(@folder), method: :delete, data: { confirm: 'Are you sure you want to disable this folder\'s upload code?' }%></li>
       <li class="divider"></li>
       <li role="presentation" class="dropdown-header">Upload Receipts</li>
       <li class="disabled"><a href="#">Clear All Receipts</a></li>
@@ -24,7 +24,7 @@
   <% if !@folder.upload_code %>
     This folder doesn't have an upload code.
   <% else %>
-    This folder's upload code is <span class="label label-default"><%= @folder.upload_code %></span>
+    This folder's upload code is <a href="/upload/<%= @folder.upload_code %>"><span class="label label-default"><%= @folder.upload_code %></span></a>
   <% end %>
 </p>
 

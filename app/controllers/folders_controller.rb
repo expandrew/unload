@@ -51,6 +51,21 @@ class FoldersController < ApplicationController
     redirect_to folders_url, notice: 'Folder was successfully destroyed.'
   end
 
+  # POST /folders/1/code
+  def generate_code
+    @folder = Folder.find(params[:folder_id])
+    new_code = SecureRandom.urlsafe_base64(4)
+    @folder.update_attribute(:upload_code, new_code)
+    redirect_to folder_path(@folder)
+  end
+
+  # DELETE /folders/1/code
+  def destroy_code
+    @folder = Folder.find(params[:folder_id])
+    @folder.update_attribute(:upload_code, nil)
+    redirect_to folder_path(@folder)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_folder
