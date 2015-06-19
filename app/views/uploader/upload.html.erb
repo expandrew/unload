@@ -1,2 +1,8 @@
 <h1 class="page_header">Upload</h1>
 <p class="lead">You are uploading to the <span class="label label-default"><%= @folder.name %></span> folder.</p>
+
+<form action="/media-upload" class="dropzone">
+  <div class="fallback">
+    <input name="file" type="file" multiple />
+  </div>
+</form>
