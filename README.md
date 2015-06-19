@@ -16,6 +16,9 @@ Probably TMI but these are my process notes, mainly for my own reference.
 
 *Useful*
 - [Nested Routes](https://gist.github.com/jhjguxin/3074080)
+- [Dropzone Bootstrap](http://www.dropzonejs.com/bootstrap.html) (look at source)
+- [Dropzone to Paperclip](https://gist.github.com/Joseph-N/a57bd165ec4860fce10d)
+- [Paperclip to Google Drive](https://github.com/evinsou/paperclip-googledrive)
 
 ## Flow
 
@@ -30,6 +33,11 @@ Probably TMI but these are my process notes, mainly for my own reference.
 - CRUD @folder.upload_code (update just regenerates the )
 - xRxx upload_receipts (each uploaded file will generate an upload receipt)
 - xxUx Dashboard password (in Settings)
+
+**Application**
+- File uploads to modified Dropzone (base on [Dropzone Bootstrap](view-source:www.dropzonejs.com/bootstrap.html) source)
+- Dropzone pushes file to Rails via Paperclip (follow [Dropzone Paperclip](https://gist.github.com/Joseph-N/a57bd165ec4860fce10d) tutorial)
+- Paperclip pushes file to Google Drive using [paperclip-googledrive](https://github.com/evinsou/paperclip-googledrive) gem
 
 ## Models
 
