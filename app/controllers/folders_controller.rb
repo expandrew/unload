@@ -23,6 +23,8 @@ class FoldersController < ApplicationController
   # POST /folders
   def create
     @folder = Folder.new(folder_params)
+    new_code = SecureRandom.urlsafe_base64(4)
+    @folder.update_attribute(:upload_code, new_code)
 
     if @folder.save
       redirect_to @folder, notice: 'Folder was successfully created.'

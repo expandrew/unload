@@ -26,7 +26,7 @@
       <% @folders.each do |folder| %>
         <tr>
           <td><%= link_to folder.name, folder_path(folder) %></td>
-          <td><a href="/upload/<%= folder.upload_code %>"><span class="label label-default"><%= folder.upload_code %></span></a></td>
+          <td><span class="label label-default"><%= folder.upload_code %></span></td>
           <td><%= folder.upload_receipts.length %></td>
         </tr>
       <% end %>
