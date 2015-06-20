@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   get 'upload/:code', to: 'uploader#upload'
 
   scope '/dashboard' do
-    get '', to: redirect('/dashboard/overview')
-    get 'overview', to: 'dashboard#index'
+    get '', to: redirect('/dashboard/folders')
     resources :folders do
       post 'code', to: 'folders#generate_code'
       delete 'code', to: 'folders#destroy_code'
