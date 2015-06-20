@@ -23,14 +23,14 @@ Probably TMI but these are my process notes, mainly for my own reference.
 ## Flow
 
 **Client**
-- receives email with url upload url for project (http://u.pxlvue.com/c0De)
+- receives email with url upload url for project (/upload/4Ac0De)
 - goes to url, sees uploader view and drops files (no login, the code was in the url)
 - or, goes to upload index, enters code and gets taken to uploader view for that code
 
 **Dashboard**
-- Special url/route (http://u.pxlvue.com/a/); protected by sign-in password (no multi-user support yet for MVP)
+- Special url/route (/dashboard); protected by sign-in password (no multi-user support yet for MVP)
 - CRUD folders; (:folder has_many :upload_receipts)
-- CRUD @folder.upload_code (update just regenerates the )
+- CRUD @folder.upload_code (update just drops/regenerates the code)
 - xRxx upload_receipts (each uploaded file will generate an upload receipt)
 - xxUx Dashboard password (in Settings)
 
