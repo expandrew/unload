@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'uploader#index'
-  get 'upload', to: redirect('/')
-  get 'upload/:code', to: 'uploader#upload'
+  root to: 'uploads#index'
+  resources :uploads, only: [ :index, :create ]
+
+  # root to: 'uploader#index'
+  # get 'upload', to: redirect('/')
+  # get 'upload/:code', to: 'uploader#upload'
 
   scope '/dashboard' do
     get '', to: redirect('/dashboard/folders')
