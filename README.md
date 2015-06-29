@@ -50,7 +50,7 @@ Probably TMI but these are my process notes, mainly for my own reference.
 - Admin user can xRxx upload_receipts on folder
 - Admin user can view a folder's uploads to see what files have been uploaded
 
-**Associations**
+**Associations**  
 `has_many :uploads`
 
 **Table Columns**
@@ -60,7 +60,7 @@ id :index
 upload_code :string (SecureRandom.urlsafe_base64(3))
 ```
 
-**Scaffold**
+**Scaffold**  
 `rails generate scaffold folder name:string`
 
 ### Upload
@@ -69,12 +69,12 @@ upload_code :string (SecureRandom.urlsafe_base64(3))
 - Client user can create an upload from the Upload View
 - Admin user can see uploads for a particular folder
 
-**Associations**
+**Associations**  
 `belongs_to :folder`
 
-**Generators**
-`rails generate model upload image:attachment`
-`rails generate controller uploads index new create`
+**Generators**  
+- `rails generate model upload image:attachment`
+- `rails generate controller uploads index new create`
 
 (bootstrapped from Rich on Rails [Multiple File Uploads With Dropzone](https://richonrails.com/articles/multiple-file-uploads-with-dropzone))
 
