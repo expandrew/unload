@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628215210) do
+ActiveRecord::Schema.define(version: 20150629062135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,15 +41,6 @@ ActiveRecord::Schema.define(version: 20150628215210) do
 
   add_index "folders", ["upload_code"], name: "index_folders_on_upload_code", using: :btree
 
-  create_table "upload_receipts", force: :cascade do |t|
-    t.string   "file_name"
-    t.integer  "folder_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "upload_receipts", ["folder_id"], name: "index_upload_receipts_on_folder_id", using: :btree
-
   create_table "uploads", force: :cascade do |t|
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -62,6 +53,5 @@ ActiveRecord::Schema.define(version: 20150628215210) do
 
   add_index "uploads", ["folder_id"], name: "index_uploads_on_folder_id", using: :btree
 
-  add_foreign_key "upload_receipts", "folders"
   add_foreign_key "uploads", "folders"
 end
