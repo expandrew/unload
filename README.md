@@ -1,8 +1,8 @@
 # Unload
 
-unload is for uploading files to Google Drive from the web.
+unload is for uploading files to Dropbox from the web.
 
-It's built to scratch an itch for a photo retouching business that handles batch photo uploads.
+It scratches an itch for a photo retouching business that handles batch photo uploads.
 
 # Project Notes / Development Log
 
@@ -12,13 +12,14 @@ Probably TMI but these are my process notes, mainly for my own reference.
 - [suspenders](https://github.com/thoughtbot/suspenders)
 - [bootstrap-sass](https://github.com/twbs/bootstrap-sass)
 - [dropzonejs-rails](https://github.com/ncuesta/dropzonejs-rails)
-- [google-api-client](https://github.com/google/google-api-ruby-client)
+- [paperclip-dropbox](https://github.com/janko-m/paperclip-dropbox)
 
 *Useful*
 - [Nested Routes](https://gist.github.com/jhjguxin/3074080)
 - [Dropzone Bootstrap](http://www.dropzonejs.com/bootstrap.html) (look at source)
 - [Dropzone to Paperclip](https://gist.github.com/Joseph-N/a57bd165ec4860fce10d)
-- [Paperclip to Google Drive](https://github.com/evinsou/paperclip-googledrive)
+- [Multiple File Uploads With Dropzone](https://richonrails.com/articles/multiple-file-uploads-with-dropzone)
+- [Paperclip to Dropbox](https://github.com/janko-m/paperclip-dropbox)
 
 ## Flow
 
@@ -37,7 +38,7 @@ Probably TMI but these are my process notes, mainly for my own reference.
 **Application**
 - File uploads to modified Dropzone (base on [Dropzone Bootstrap](view-source:www.dropzonejs.com/bootstrap.html) source)
 - Dropzone pushes file to Rails via Paperclip (follow [Dropzone Paperclip](https://gist.github.com/Joseph-N/a57bd165ec4860fce10d) tutorial)
-- Paperclip pushes file to Google Drive using [paperclip-googledrive](https://github.com/evinsou/paperclip-googledrive) gem
+- Paperclip pushes file to Dropbox using [paperclip-dropbox](https://github.com/janko-m/paperclip-dropbox) gem
 
 ## Models
 
@@ -47,9 +48,10 @@ Probably TMI but these are my process notes, mainly for my own reference.
 - Admin user can CRUD a folder
 - Admin user can set an upload code for a folder
 - Admin user can xRxx upload_receipts on folder
+- Admin user can view a folder's uploads to see what files have been uploaded
 
 **Associations**
-`has_many :upload_receipts`
+`has_many :uploads`
 
 **Table Columns**
 ```ruby
@@ -61,35 +63,27 @@ upload_code :string (SecureRandom.urlsafe_base64(3))
 **Scaffold**
 `rails generate scaffold folder name:string`
 
-
-### Upload Receipt
+### Upload
 
 **Stories**
-- Application generates an upload_receipt object for each file uploaded through the app to Drive
-- Admin user can view a folder's upload receipts to see what files have been uploaded
+- Client user can create an upload from the Upload View
+- Admin user can see uploads for a particular folder
 
 **Associations**
 `belongs_to :folder`
 
-**Table Columns**
-```
-file_name: stringid: indexed
-folder_id: foreign_key to folders
-timestamps
-```
+**Generators**
+`rails generate model upload image:attachment`
+`rails generate controller uploads index new create`
 
-**Scaffold**
-`rails generate scaffold UploadReceipt file_name:string folder_id:references —timestamps`
+(bootstrapped from Rich on Rails [Multiple File Uploads With Dropzone](https://richonrails.com/articles/multiple-file-uploads-with-dropzone))
 
-## Uploader View
+## Upload View
 
 **Stories**
-- Client goes to special URL (http://u.pxlvue.com/upload/c0De) and sees uploader for the corresponding Folder with that upload code
+- Client goes to special URL (http://u.pxlvue.com/upload/4ac0De) and sees uploader for the corresponding Folder with that upload code
 
-**Scaffold**
-`rails generate controller Uploader`
-
-(base template at `/layouts/uploader.html.erb`)
+(base template at `/layouts/uploads.html.erb`)
 
 
 # Suspenders README
