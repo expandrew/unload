@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "2.2.2"
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem "airbrake"
 gem "autoprefixer-rails"
 gem "better_errors"
@@ -43,7 +45,6 @@ group :development, :test do
   gem "awesome_print"
   gem "bundler-audit", require: false
   gem "byebug"
-  gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.1.0"

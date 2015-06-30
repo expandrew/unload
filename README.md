@@ -13,6 +13,7 @@ Probably TMI but these are my process notes, mainly for my own reference.
 - [bootstrap-sass](https://github.com/twbs/bootstrap-sass)
 - [dropzonejs-rails](https://github.com/ncuesta/dropzonejs-rails)
 - [paperclip-dropbox](https://github.com/janko-m/paperclip-dropbox)
+- [dotenv](https://github.com/bkeepers/dotenv)
 
 *Useful*
 - [Nested Routes](https://gist.github.com/jhjguxin/3074080)
@@ -84,6 +85,12 @@ upload_code :string (SecureRandom.urlsafe_base64(3))
 - Client goes to special URL (http://u.pxlvue.com/upload/4ac0De) and sees uploader for the corresponding Folder with that upload code
 
 (base template at `/layouts/uploads.html.erb`)
+
+
+## Curveballs
+
+- generate `ENV['SECRET_KEY_BASE']` with `% rake secret`
+- generate Dropbox credentials with `% rake dropbox:authorize APP_KEY=your_app_key APP_SECRET=your_app_secret ACCESS_TYPE=dropbox|app_folder`
 
 
 # Suspenders README
