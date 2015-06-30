@@ -4,6 +4,8 @@ unload is for uploading files to Dropbox from the web.
 
 It scratches an itch for a photo retouching business that handles batch photo uploads.
 
+A demo is available [here](http://recordit.co/FX5ngFSyP7).
+
 # Project Notes / Development Log
 
 Probably TMI but these are my process notes, mainly for my own reference.
@@ -14,6 +16,7 @@ Probably TMI but these are my process notes, mainly for my own reference.
 - [dropzonejs-rails](https://github.com/ncuesta/dropzonejs-rails)
 - [paperclip-dropbox](https://github.com/janko-m/paperclip-dropbox)
 - [dotenv](https://github.com/bkeepers/dotenv)
+- [Heroku Addons: Postmark (email delivery)](https://elements.heroku.com/addons/postmark)
 
 *Useful*
 - [Nested Routes](https://gist.github.com/jhjguxin/3074080)
