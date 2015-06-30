@@ -2,8 +2,12 @@ source "https://rubygems.org"
 
 ruby "2.2.2"
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem "airbrake"
 gem "autoprefixer-rails"
+gem "better_errors"
+gem "binding_of_caller"
 gem "bootstrap-sass", "~> 3.3.4"
 gem "bourbon", "~> 4.2.0"
 gem "coffee-rails", "~> 4.1.0"
@@ -18,6 +22,8 @@ gem "jquery-rails"
 gem "neat", "~> 1.7.0"
 gem "newrelic_rpm", ">= 3.9.8"
 gem "normalize-rails", "~> 3.0.0"
+gem "paperclip", "~> 4.2.0"
+gem "paperclip-dropbox", "~> 1.3.2"
 gem "pg"
 gem "rack-canonical-host"
 gem "rails", "4.2.1"
@@ -39,7 +45,6 @@ group :development, :test do
   gem "awesome_print"
   gem "bundler-audit", require: false
   gem "byebug"
-  gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.1.0"

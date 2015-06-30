@@ -15,3 +15,17 @@
 //= require_tree .
 //= require bootstrap-sprockets
 //= require dropzone
+
+$(document).ready(function(){
+  Dropzone.autoDiscover = false;
+
+  var dropzone = new Dropzone (".dropzone", {
+    maxFilesize: 256,
+    paramName: "upload[image]",
+  });
+
+  dropzone.on("success", function(file) {
+    // this.removeFile(file);
+    console.log('Successfully uploaded!')
+  });
+});
