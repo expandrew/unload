@@ -44,10 +44,6 @@ class FoldersController < ApplicationController
 
   # DELETE /folders/1
   def destroy
-    @folder.upload_receipts.each do |upload_receipt|
-      upload_receipt.destroy
-    end
-
     @folder.destroy!
 
     redirect_to folders_url, notice: 'Folder was successfully destroyed.'
