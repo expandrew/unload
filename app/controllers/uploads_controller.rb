@@ -6,7 +6,7 @@ class UploadsController < ApplicationController
 
   def validate_code
     if @folder
-      redirect_to upload_code_path(params[:code])
+      redirect_to upload_code_path(@folder.upload_code)
     else
       redirect_to enter_upload_code_path, notice: 'Your Upload Code was invalid.'
     end
@@ -33,7 +33,8 @@ class UploadsController < ApplicationController
 private
 
   def set_folder
-    @folder = Folder.find_by(upload_code: params[:code])
+    code = params[:code].upcase
+    @folder = Folder.find_by(upload_code: code)
   end
 
   def upload_params

@@ -23,7 +23,7 @@ class FoldersController < ApplicationController
   # POST /folders
   def create
     @folder = Folder.new(folder_params)
-    new_code = SecureRandom.urlsafe_base64(4)
+    new_code = SecureRandom.hex(3).upcase
     @folder.update_attribute(:upload_code, new_code)
 
     if @folder.save
@@ -52,7 +52,7 @@ class FoldersController < ApplicationController
   # POST /folders/1/code
   def generate_code
     @folder = Folder.find(params[:folder_id])
-    new_code = SecureRandom.urlsafe_base64(4)
+    new_code = SecureRandom.hex(3).upcase
     @folder.update_attribute(:upload_code, new_code)
     redirect_to folder_path(@folder)
   end
