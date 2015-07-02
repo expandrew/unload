@@ -16,15 +16,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
-  <%= render "header" %>
+  <%# No Header for Uploads view %>
+  <% unless params[:controller] === 'uploads' %>
+    <%= render "header" %>
+  <% end %>
   <%= render "flashes" %>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12 main">
-            <%= yield %>
-          </div>
-        </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 main">
+        <%= yield %>
       </div>
+    </div>
   </div>
   <%= render "javascript" %>
 </body>
