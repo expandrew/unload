@@ -1,7 +1,7 @@
 class UploadsController < ApplicationController
   before_action :set_folder, only: [ :new, :create ]
 
-  def index
+  def enter_code
   end
 
   def new

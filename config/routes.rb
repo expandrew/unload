@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # or like below without initializer:
   # root to: 'high_voltage/pages#show', id: 'landing'
 
-  get 'upload/', to: redirect(''), as: 'no_code'
-  get 'upload/:code', to: 'uploads#new', as: 'upload'
+  get 'upload/', to: 'uploads#enter_code', as: 'enter_upload_code'
+  get 'upload/:code', to: 'uploads#new', as: 'upload_code'
   post 'upload/:code', to: 'uploads#create'
 
   scope '/dashboard' do

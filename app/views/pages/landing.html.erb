@@ -1,1 +1,17 @@
-<h1>Landing Page</h1>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="jumbotron">
+        <h1 class="page_header expandrew">unload</h1>
+        <p class="lead">Choose a starting point:</p>
+        <div class="btn-group btn-group-lg" role="group" aria-label="...">
+          <%= link_to "Dashboard", dashboard_path, { :class => "btn btn-default" } %>
+          <%= link_to "Enter Upload Code", enter_upload_code_path, { :class => "btn btn-default" } %>
+          <%= link_to "Order Form", root_path, { :class => "btn btn-default disabled" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
