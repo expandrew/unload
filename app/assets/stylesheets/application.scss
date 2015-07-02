@@ -11,3 +11,13 @@
 @import "bootstrap";
 
 @import "dropzone/dropzone";
+
+.expandrew {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  display:inline-block;
+  letter-spacing: -.050em;
+  transform: scale(.95,1);
+  -webkit-transform: scale(.95,1);
+}
