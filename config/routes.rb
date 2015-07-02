@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'uploads#index'
+  # root route is set with config/initializers/high_voltage.rb
+
+  # or like below without initializer:
+  # root to: 'high_voltage/pages#show', id: 'landing'
 
   get 'upload/', to: redirect(''), as: 'no_code'
   get 'upload/:code', to: 'uploads#new', as: 'upload'
