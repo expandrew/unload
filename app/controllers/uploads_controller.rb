@@ -1,14 +1,22 @@
 class UploadsController < ApplicationController
-  before_action :set_folder, only: [ :new, :create ]
+  before_action :set_folder, only: [ :validate_code, :new, :create ]
 
   def enter_code
+  end
+
+  def validate_code
+    if @folder
+      redirect_to upload_code_path(params[:code])
+    else
+      redirect_to enter_upload_code_path, notice: 'Your Upload Code was invalid.'
+    end
   end
 
   def new
     if @folder
       @upload = @folder.uploads.new(folder_id: @folder.id)
     else
-      redirect_to root_path, notice: 'Your Upload Code was invalid.'
+      redirect_to enter_upload_code_path, notice: 'Your Upload Code was invalid.'
     end
   end
 

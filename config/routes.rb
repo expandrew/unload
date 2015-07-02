@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root to: 'high_voltage/pages#show', id: 'landing'
 
   get 'upload/', to: 'uploads#enter_code', as: 'enter_upload_code'
+  post 'upload/', to: 'uploads#validate_code'
   get 'upload/:code', to: 'uploads#new', as: 'upload_code'
   post 'upload/:code', to: 'uploads#create'
 

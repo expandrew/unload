@@ -1,2 +1,19 @@
-<h1 class="page_header">Upload</h1>
-<p class="lead">Enter Code</p>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="jumbotron">
+        <h1 class="page_header expandrew">unload</h1>
+        <%= form_tag({controller: "uploads", action: "validate_code"}) do %>
+          <div class="input-group">
+            <input name="code" type="text" class="form-control" placeholder="Upload Code">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">Go</button>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
