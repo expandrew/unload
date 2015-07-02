@@ -17,7 +17,9 @@
 <body class="<%= body_class %>">
   <%= render "flashes" -%>
     <div class="container-fluid">
-      <%= yield %>
+      <div class="col-xs-12">
+        <%= yield %>
+      </div>
     </div>
   <%= render "javascript" %>
 </body>
